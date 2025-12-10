@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Responsive extends StatelessWidget {
-  const Responsive(Padding padding, {
+  const Responsive(
+    Padding padding, {
     super.key,
     required this.desktop,
-   this.tablet,
-   this.mobileLarg,
+    this.tablet,
+    this.mobileLarg,
     required this.mobile,
   });
 
@@ -15,14 +16,17 @@ class Responsive extends StatelessWidget {
   final Widget mobile;
 
   static bool isMobile(BuildContext context) {
-    return MediaQuery.of(context).size.width <= 500;
+    return MediaQuery.of(context).size.width <= 430;
   }
+
   static bool isTablet(BuildContext context) {
     return MediaQuery.of(context).size.width < 1024;
   }
+
   static bool isMobileLarge(BuildContext context) {
-    return MediaQuery.of(context).size.width <= 700 ;
+    return MediaQuery.of(context).size.width <= 600;
   }
+
   static bool isDesktop(BuildContext context) {
     return MediaQuery.of(context).size.width >= 1024;
   }

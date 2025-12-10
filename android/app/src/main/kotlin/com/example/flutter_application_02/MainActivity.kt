@@ -1,4 +1,4 @@
-package com.example.flutter_application_02
+package com.example.throw_age
 
 import io.flutter.embedding.android.FlutterActivity
 

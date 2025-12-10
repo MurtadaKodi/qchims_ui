@@ -1,4 +1,4 @@
-name: flutter_application_02
+name: heritage_ui
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -34,20 +34,49 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  flutter_native_splash: ^2.4.6
+  flutter_native_splash: ^2.4.7
   carousel_slider: ^5.1.1
   curved_navigation_bar: ^1.0.6
   url_launcher: ^6.3.2
-  flutter_map_marker_popup: ^8.0.1
+  flutter_map_marker_popup: ^8.1.0
   flutter_map: ^8.2.1
   latlong2: ^0.9.1
   flutter_social_button: ^1.1.6+1
   circularimages_row: ^1.0.0+1
+  theme_provider: ^0.6.0
+  themer: ^0.0.8
+  provider: ^6.1.5+1
+  get: ^4.7.2
+  flutter_staggered_grid_view: ^0.7.0
+  auto_size_text: ^3.0.0
+  material_color_utilities: ^0.13.0
+  unicode: ^0.3.1
+  flutter_launcher_icons: ^0.14.4
+  flutter_lints: ^6.0.0
+  flutter_svg: ^2.2.1
+  social_auth_buttons: ^2.0.2
+  dropdown_search: ^6.0.2
+  flutter_map_animations: ^0.9.0
+  rename_app: ^1.6.5
+  shared_preferences: ^2.5.3
+  google_fonts: ^6.3.2
+
+  
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_launcher_icons:
+  android: "lib/assets/icons/icon1.png"
+  ios: true
+  web: true
+  macos: true
+  linux: true
+  windows: true
+  image_path: "lib/assets/icons/icon1.png"
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -68,8 +97,11 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - Images/
+assets:
+  # - lib/assets/images/
+  - lib/assets/icons/
+  # - lib/assets/fonts/
+  - lib/assets/icons/google-brands-solid-full.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -96,3 +128,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+
