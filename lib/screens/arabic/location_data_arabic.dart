@@ -341,14 +341,14 @@ final List<Map<String, dynamic>> arabicData = [
   },
   {
     "id": 27,
-    "name": 'Al Yousetiya - اليوستية',
+    "name": 'Al Yousefiya - اليوسفية',
     "icon": Icons.location_on,
     "color": Colors.white,
     "img":
         'https://res.cloudinary.com/dmklduciw/image/upload/v1758880239/not_found_rpvaj7.png',
     "point": LatLng(26.1136962,51.1719722),
-    "title": "Al Yousetiya - اليوستية",
-    "description": "Al Yousetiya, a city with rich history",
+    "title": "Al Yousefiya - اليوسفية",
+    "description": "Al Yousefiya, a city with rich history",
     "uri": 'https://maps.app.goo.gl/QUo9K4RUU43FkQiK7',
   },
   

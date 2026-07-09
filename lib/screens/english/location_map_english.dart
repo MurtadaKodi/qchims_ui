@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_animations/flutter_map_animations.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:heritage_ui/screens/english/location_data_english.dart' as location_data;
+import 'package:heritage_ui/screens/shared/app_strings.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LocationMapEnglish extends StatefulWidget {
@@ -15,14 +15,12 @@ class LocationMapEnglish extends StatefulWidget {
   _LocationMapState createState() => _LocationMapState();
 }
 
-class _LocationMapState extends State<LocationMapEnglish>
-    with TickerProviderStateMixin {
+class _LocationMapState extends State<LocationMapEnglish> with TickerProviderStateMixin {
   late final AnimatedMapController _animatedMapController;
   final PopupController _popupController = PopupController();
 
-
   String? _selectedName;
-  
+
   double _zoom = 12.0;
 
   @override
@@ -33,16 +31,15 @@ class _LocationMapState extends State<LocationMapEnglish>
 
   @override
   Widget build(BuildContext context) {
+    const text = AppStrings.english;
+
     return Scaffold(
       appBar: AppBar(
         title: DropdownButton<String>(
-          hint: Text("Select Location"),
+          hint: Text(text.locationSelectHint),
           value: _selectedName,
           items: location_data.englishData.map((loc) {
-            return DropdownMenuItem<String>(
-              value: loc["name"],
-              child: Text(loc["name"]),
-            );
+            return DropdownMenuItem<String>(value: loc["name"], child: Text(loc["name"]));
           }).toList(),
           onChanged: (value) {
             setState(() {
@@ -50,9 +47,7 @@ class _LocationMapState extends State<LocationMapEnglish>
             });
 
             // Find the marker by name
-            final selected = location_data.englishData.firstWhere(
-              (loc) => loc["name"] == value,
-            );
+            final selected = location_data.englishData.firstWhere((loc) => loc["name"] == value);
             final LatLng point = selected["point"];
 
             // Animate to marker (smooth move)
@@ -87,7 +82,8 @@ class _LocationMapState extends State<LocationMapEnglish>
         ),
         children: [
           TileLayer(
-            urlTemplate: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            urlTemplate:
+                'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
             subdomains: ['a', 'b', 'c'],
           ),
 
@@ -102,9 +98,8 @@ class _LocationMapState extends State<LocationMapEnglish>
                   point: loc["point"],
                   width: isSelected ? 50 : 40,
                   height: isSelected ? 50 : 40,
-                  child: Icon(isSelected
-                      ? Icons.location_pin
-                      : Icons.location_on,
+                  child: Icon(
+                    isSelected ? Icons.location_pin : Icons.location_on,
                     // Icons.location_pin,
                     color: isSelected ? Colors.blue : Colors.red,
                     size: isSelected ? 45 : 25,
@@ -138,10 +133,7 @@ class _LocationMapState extends State<LocationMapEnglish>
                               children: [
                                 Text(
                                   markerData['title'],
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                                 ),
                                 SizedBox(height: 4),
                                 Padding(
@@ -173,7 +165,7 @@ class _LocationMapState extends State<LocationMapEnglish>
                                       mode: LaunchMode.externalApplication,
                                     )) {}
                                   },
-                                  child: Text('Let\'s Go'),
+                                  child: Text(text.locationGoButton),
                                 ),
                               ],
                             ),
@@ -194,20 +186,19 @@ class _LocationMapState extends State<LocationMapEnglish>
                 ElevatedButton(
                   style: ButtonStyle(
                     shape: WidgetStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
+                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     ),
-                    backgroundColor: WidgetStateProperty.all(
-                      Colors.transparent,
-                    ),
+                    backgroundColor: WidgetStateProperty.all(Colors.transparent),
                     foregroundColor: WidgetStateProperty.all(Colors.black),
                     padding: WidgetStateProperty.all(EdgeInsets.all(20)),
                   ),
                   onPressed: () {
                     setState(() {
                       _zoom += .2;
-                      _animatedMapController.mapController.move(_animatedMapController.mapController.camera.center, _zoom);
+                      _animatedMapController.mapController.move(
+                        _animatedMapController.mapController.camera.center,
+                        _zoom,
+                      );
                     });
                   },
                   child: Icon(Icons.add, color: Colors.white, size: 30),
@@ -216,20 +207,19 @@ class _LocationMapState extends State<LocationMapEnglish>
                 ElevatedButton(
                   style: ButtonStyle(
                     shape: WidgetStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
+                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     ),
-                    backgroundColor: WidgetStateProperty.all(
-                      Colors.transparent,
-                    ),
+                    backgroundColor: WidgetStateProperty.all(Colors.transparent),
                     foregroundColor: WidgetStateProperty.all(Colors.white),
                     padding: WidgetStateProperty.all(EdgeInsets.all(20)),
                   ),
                   onPressed: () {
                     setState(() {
                       _zoom -= .2;
-                      _animatedMapController.mapController.move(_animatedMapController.mapController.camera.center, _zoom);
+                      _animatedMapController.mapController.move(
+                        _animatedMapController.mapController.camera.center,
+                        _zoom,
+                      );
                     });
                   },
                   child: Icon(Icons.remove, color: Colors.white, size: 30),
@@ -238,13 +228,9 @@ class _LocationMapState extends State<LocationMapEnglish>
                 ElevatedButton(
                   style: ButtonStyle(
                     shape: WidgetStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
+                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     ),
-                    backgroundColor: WidgetStateProperty.all(
-                      Colors.transparent,
-                    ),
+                    backgroundColor: WidgetStateProperty.all(Colors.transparent),
                     foregroundColor: WidgetStateProperty.all(Colors.white),
                     padding: WidgetStateProperty.all(EdgeInsets.all(20)),
                   ),
@@ -252,7 +238,10 @@ class _LocationMapState extends State<LocationMapEnglish>
                     setState(() {
                       // Reset zoom to default value
                       _zoom = 9.2;
-                      _animatedMapController.mapController.move(_animatedMapController.mapController.camera.center, _zoom);
+                      _animatedMapController.mapController.move(
+                        _animatedMapController.mapController.camera.center,
+                        _zoom,
+                      );
                     });
                   },
                   child: Icon(Icons.home, color: Colors.white, size: 30),

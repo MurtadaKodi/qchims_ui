@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heritage_ui/screens/arabic/login_arabic.dart';
 import 'package:heritage_ui/screens/english/login_english.dart';
+import 'package:heritage_ui/screens/shared/app_strings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -21,7 +22,7 @@ class LandPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Language Selector',
+      title: GlobalStrings.languageSelectorAppTitle,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
       // إذا سبق واختار لغة، افتحها مباشرة
@@ -64,30 +65,33 @@ class LanguageSelectorPage extends StatelessWidget {
       backgroundColor: Colors.indigo,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text('Language /  اللغة', style: TextStyle(fontSize: 20, color: Colors.white),),
+        title: const Text(
+          GlobalStrings.languageSelectorHeader,
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
         centerTitle: true,
       ),
       body: DecoratedBox(
-        decoration: BoxDecoration(image: DecorationImage(
-          image: NetworkImage('https://res.cloudinary.com/dmklduciw/image/upload/v1716195150/DJI_0262_ieuxeo.jpg'),
-          fit: BoxFit.cover,
-        )),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+              'https://res.cloudinary.com/dmklduciw/image/upload/v1716195150/DJI_0262_ieuxeo.jpg',
+            ),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  'Please select your language:\nيرجى اختيار لغتك المفضلة:',
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                const Text(
+                  GlobalStrings.languageSelectorPrompt,
+                  style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 // زر العربية
                 SizedBox(
                   width: double.infinity,
@@ -95,21 +99,16 @@ class LanguageSelectorPage extends StatelessWidget {
                     // icon: Icon(Icons.flag, color: Colors.white),
                     label: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 14.0),
-                      child: Text(
-                        '🇶🇦    العربية',
-                        style: TextStyle(fontSize: 18),
-                      ),
+                      child: const Text(GlobalStrings.arabicOption, style: TextStyle(fontSize: 18)),
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     ),
                     onPressed: () => _saveLanguage(context, 'arabic'),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 // زر الإنجليزية
                 SizedBox(
                   width: double.infinity,
@@ -117,16 +116,14 @@ class LanguageSelectorPage extends StatelessWidget {
                     // icon: Icon(Icons.language, color: Colors.white),
                     label: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 14.0),
-                      child: Text(
-                        '🇺🇸  English',
+                      child: const Text(
+                        GlobalStrings.englishOption,
                         style: TextStyle(fontSize: 18),
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     ),
                     onPressed: () => _saveLanguage(context, 'english'),
                   ),
@@ -156,12 +153,13 @@ class EnglishPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
-      appBar: AppBar(title: Text('Heritage UI Main Page')),
+      appBar: AppBar(title: const Text(GlobalStrings.heritageMainPageTitle)),
       body: DecoratedBox(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage('https://res.cloudinary.com/dmklduciw/image/upload/v1686040911/WebSite%20Images/Forts/Bidda-1_dqasfo.jpg'),
+            image: NetworkImage(
+              'https://res.cloudinary.com/dmklduciw/image/upload/v1686040911/WebSite%20Images/Forts/Bidda-1_dqasfo.jpg',
+            ),
             fit: BoxFit.cover,
           ),
         ),
@@ -169,21 +167,21 @@ class EnglishPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.language, size: 80, color: Colors.white),
-              SizedBox(height: 16),
-              Text(
-                'Welcome! to Heritage UI \n مرحباً! إلى واجهة المستخدم التراثية ',
+              const Icon(Icons.language, size: 80, color: Colors.white),
+              const SizedBox(height: 16),
+              const Text(
+                GlobalStrings.bilingualWelcome,
                 style: TextStyle(color: Colors.white, fontSize: 22),
-        
+
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton.icon(
-                icon: Icon(Icons.language, size: 24, color: Colors.blueAccent),
+                icon: const Icon(Icons.language, size: 24, color: Colors.blueAccent),
                 label: Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Text(
-                    'Choose Language \n اختر اللغة',
+                  padding: const EdgeInsets.all(8),
+                  child: const Text(
+                    GlobalStrings.chooseLanguageButton,
                     style: TextStyle(fontSize: 18),
                     textAlign: TextAlign.center,
                   ),
@@ -191,11 +189,9 @@ class EnglishPage extends StatelessWidget {
                 onPressed: () => _resetLanguage(context),
               ),
             ],
-            
           ),
         ),
       ),
     );
   }
 }
-

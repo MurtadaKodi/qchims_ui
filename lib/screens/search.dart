@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:heritage_ui/screens/english/location_data_english.dart';
+import 'package:latlong2/latlong.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +11,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyDropDown(title: '', onChanged: (value) {  }, items: [], onSelected: (value) {}));
+    return MaterialApp(
+      home: MyDropDown(title: '', onChanged: (value) {}, items: [], onSelected: (value) {}),
+    );
   }
 }
 
 class MyDropDown extends StatefulWidget {
-  const MyDropDown({super.key, required String title, required Null Function(String?) onChanged, required List<DropdownMenuItem<String>> items, required Null Function(String?) onSelected});
+  const MyDropDown({
+    super.key,
+    required String title,
+    required Null Function(String?) onChanged,
+    required List<DropdownMenuItem<String>> items,
+    required Null Function(String?) onSelected,
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -24,8 +32,8 @@ class MyDropDown extends StatefulWidget {
 }
 
 class _MyDropDownState extends State<MyDropDown> {
-
-String? selectedValue; // القيمة المختارة
+  String? selectedValue; // القيمة المختارة من القائمة الأساسية
+  String? selectedNameValue; // القيمة المختارة من قائمة البحث بالاسم
 
   @override
   Widget build(BuildContext context) {
@@ -47,15 +55,35 @@ String? selectedValue; // القيمة المختارة
           ),
           initialValue: selectedValue,
           items: englishData.map((marker) {
-            return DropdownMenuItem<String>(
-              value: marker['name'],
-              child: Text(marker['name']),
-            );
+            return DropdownMenuItem<String>(value: marker['name'], child: Text(marker['name']));
           }).toList(),
           onChanged: (newValue) {
             setState(() {
               selectedValue = newValue;
-        
+            });
+          },
+        ),
+        const SizedBox(height: 12),
+        DropdownButtonFormField<String>(
+          focusColor: Colors.white,
+          isExpanded: true,
+          menuMaxHeight: 300,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blueAccent),
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+            ),
+            labelText: "Search by Name",
+            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          ),
+          initialValue: selectedNameValue,
+          items: englishData.map((marker) {
+            final name = marker['name'].toString();
+            return DropdownMenuItem<String>(value: name, child: Text(name));
+          }).toList(),
+          onChanged: (newValue) {
+            setState(() {
+              selectedNameValue = newValue;
             });
           },
         ),
@@ -82,6 +110,7 @@ class MyMarker {
     required this.uri,
     required this.color,
     required this.icon,
-    required this.img, required List<dynamic> myMarkers,
+    required this.img,
+    required List<dynamic> myMarkers,
   });
 }

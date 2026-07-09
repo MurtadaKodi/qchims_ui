@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
@@ -23,17 +21,235 @@
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="heritage_ui">
+  <meta name="apple-mobile-web-app-title" content="qchims_ui">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="icons/favicon.png"/>
+  <link rel="icon" type="image/png" href="icons/favicon.png">
 
-  <title>Heritage UI</title>
+  <title>qchims_ui</title>
   <link rel="manifest" href="manifest.json">
+  <style id="splash-screen-style">
+    html {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      background-color: #ffffff;
+          background-size: 100% 100%;
+    }
+
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .contain {
+      display:block;
+      width:100%; height:100%;
+      object-fit: contain;
+    }
+
+    .stretch {
+      display:block;
+      width:100%; height:100%;
+    }
+
+    .cover {
+      display:block;
+      width:100%; height:100%;
+      object-fit: cover;
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      -ms-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+    }
+
+    .bottomLeft {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .bottomRight {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    .pwa-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.48);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    .pwa-modal {
+      width: min(440px, 100%);
+      border-radius: 16px;
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.28);
+      overflow: hidden;
+      font-family: "Avenir Next", "Segoe UI", Tahoma, Arial, sans-serif;
+    }
+
+    .pwa-modal-header {
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #0a4a7a, #001f3f);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .pwa-modal-body {
+      padding: 18px 20px;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .pwa-modal-body ol {
+      margin: 10px 0 0 20px;
+      padding: 0;
+    }
+
+    .pwa-note {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #ecfeff;
+      color: #155e75;
+      font-size: 14px;
+    }
+
+    .pwa-modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      padding: 0 20px 18px;
+    }
+
+    .pwa-btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .pwa-btn-primary {
+      background: #0a4a7a;
+      color: #ffffff;
+    }
+
+    .pwa-btn-secondary {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+  </style>
+  <script id="splash-screen-script">
+    function removeSplashFromWeb() {
+      document.getElementById("splash")?.remove();
+      document.getElementById("splash-branding")?.remove();
+      document.body.style.background = "transparent";
+    }
+
+    (function showSafariInstallPrompt() {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+        || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      const isSafari = /^((?!chrome|android|crios|fxios|edgios).)*safari/i.test(navigator.userAgent);
+      const isStandalone = window.matchMedia("(display-mode: standalone)").matches
+        || window.navigator.standalone === true;
+
+      if (!isIOS || !isSafari || isStandalone) return;
+      if (localStorage.getItem("pwaInstallPromptDismissed") === "true") return;
+
+      function closeModal() {
+        document.getElementById("pwa-install-overlay")?.remove();
+      }
+
+      function showQuestionModal() {
+        const overlay = document.createElement("div");
+        overlay.id = "pwa-install-overlay";
+        overlay.className = "pwa-modal-overlay";
+        overlay.innerHTML = ""
+          + '<div class="pwa-modal" role="dialog" aria-modal="true" aria-label="Install app">'
+          + '  <div class="pwa-modal-header">Install App | تثبيت التطبيق</div>'
+          + '  <div class="pwa-modal-body">Do you want to download the app?<br>هل تريد تنزيل التطبيق؟</div>'
+          + '  <div class="pwa-modal-actions">'
+          + '    <button id="pwa-cancel" class="pwa-btn pwa-btn-secondary" type="button">Not now | ليس الآن</button>'
+          + '    <button id="pwa-install" class="pwa-btn pwa-btn-primary" type="button">Install | تثبيت</button>'
+          + '  </div>'
+          + '</div>';
+
+        document.body.appendChild(overlay);
+
+        document.getElementById("pwa-cancel")?.addEventListener("click", function () {
+          localStorage.setItem("pwaInstallPromptDismissed", "true");
+          closeModal();
+        });
+
+        document.getElementById("pwa-install")?.addEventListener("click", function () {
+          closeModal();
+          showInstructionsModal();
+        });
+      }
+
+      function showInstructionsModal() {
+        const overlay = document.createElement("div");
+        overlay.id = "pwa-install-overlay";
+        overlay.className = "pwa-modal-overlay";
+        overlay.innerHTML = ""
+          + '<div class="pwa-modal" role="dialog" aria-modal="true" aria-label="Install instructions">'
+          + '  <div class="pwa-modal-header">How To Install | طريقة التثبيت</div>'
+          + '  <div class="pwa-modal-body">'
+          + '    <strong>Safari steps:</strong>'
+          + '    <ol><li>Tap Share (square with arrow).</li><li>Tap Add to Home Screen.</li><li>Tap Add.</li></ol>'
+          + '    <br><strong>خطوات سفاري:</strong>'
+          + '    <ol><li>اضغط زر المشاركة.</li><li>اختر إضافة إلى الشاشة الرئيسية.</li><li>اضغط إضافة.</li></ol>'
+          + '    <div class="pwa-note">After adding it, you can use the app without internet for cached content.<br>بعد إضافته، يمكنك استخدام التطبيق بدون إنترنت للمحتوى المخزن.</div>'
+          + '  </div>'
+          + '  <div class="pwa-modal-actions">'
+          + '    <button id="pwa-done" class="pwa-btn pwa-btn-primary" type="button">Done | تم</button>'
+          + '  </div>'
+          + '</div>';
+
+        document.body.appendChild(overlay);
+        document.getElementById("pwa-done")?.addEventListener("click", closeModal);
+      }
+
+      window.addEventListener("load", function () {
+        setTimeout(showQuestionModal, 1400);
+      });
+    })();
+  </script>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
-</body>
-</html>
+  <picture id="splash">
+      <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x" media="(prefers-color-scheme: light)">
+      <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
+      <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
+  </picture>
+  <script src="flutter_bootstrap.js" async=""></script>
+
+
+</body></html>

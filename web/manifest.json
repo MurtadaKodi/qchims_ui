@@ -1,6 +1,6 @@
 {
-    "name": "Heritage UI",
-    "short_name": "Heritage UI",
+    "name": "qchims_ui",
+    "short_name": "qchims_ui",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

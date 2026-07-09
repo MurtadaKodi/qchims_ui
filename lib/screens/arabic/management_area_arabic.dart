@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:heritage_ui/screens/shared/app_strings.dart';
 
 class ManagementAreaArabic extends StatelessWidget {
-  const ManagementAreaArabic({
-    super.key,
-    required String title,
-    required String username,
-  });
+  const ManagementAreaArabic({super.key, required String title, required String username});
 
   @override
   Widget build(BuildContext context) {
+    const text = AppStrings.arabic;
+
     return Scaffold(
-      appBar: AppBar(title: const Text("إدارة المناطق")),
+      appBar: AppBar(title: Text(text.managementArea)),
       backgroundColor: Colors.white,
-      body: const Center(
+      body: Center(
         child: Text(
-          'تحت الإنشاء  - إدارة المناطق',
-          style: TextStyle(
-            fontSize: 24,
-          ),
+          text.managementAreaComingSoon,
+          style: TextStyle(fontSize: 24),
           textAlign: TextAlign.center,
-          
         ),
       ),
     );

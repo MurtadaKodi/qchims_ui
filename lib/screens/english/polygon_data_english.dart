@@ -30,7 +30,7 @@ final List<Map<String, dynamic>> polygons = [
     "description":
         "Abandoned coastal settlement of Al Yousefia to west of modern Abu Al Duloof. Defined by a series of earthworks suggestive of structural features and middens. Visible in 1965 GAMBIT imagery. The site was first surveyed by the British team lead by B. De Cardi in 1973. Groundtruthing 2011 (HAC40); The site consists of at least 7 mounds of sand, showing traces of buildings underneath. Located just north of the fort Yusefiah (HAR10045) and running along the coastline c.200 x 75m. The fort and the settlement are probably contemporary. There are fishtraps off the coastline.",
     "uri": 'https://maps.app.goo.gl/zu38bkYRrT5mNcLx5',
-    "supervisor": "Name of Inspector or Supervisor ...."
+    "supervisor": "Saad"
   },
   // Ras Teebee  2
   {
@@ -91,7 +91,7 @@ final List<Map<String, dynamic>> polygons = [
     "description":
         "Area containing some regular earthwork/moisture features appearing to define possible former structures adjacent to shoreline- possible former settlement? Groundtruthing 2011 (Ev40): large coastal settlement with numerous compounds. Many buried under sand. All buildings were constructed out of beach rock. Site in serious risk and seriously damaged by vehicular traffic. Groundtruthing 2013 (Ev207); HAR10069 is a large coastal settlement, consisting of multiple structural features relating to compounds and individual structures as well as extensive archaeological deposits relating to occupation and dumping. The structural features are visible as linear and rectilinear outlines of aeolian sands and medium unbonded limestone rock (locally sourced) all are deflated with several having been damaged by vehicles, as have the underlying archaeological deposits which have been eroded/exposed by viewing traffic and are now subject to natural erosion. The site itself extends much further along the coast that the current site extents [this has now been corrected in the HER], a diffuse linear spread of structures culminated in another nucleated settlement area some 450m west of the currently polygon site. A general scatter of pottery and other artifacts continues from the site at least 600m inland forming a hinterland of anthropological activity.",
     "uri": 'https://maps.app.goo.gl/jApTRu8JLXSN7Wz57',
-    "supervisor": "Name of Inspector or Supervisor ...."
+    "supervisor": "Ahmed"
   },
   // Lejmail 3
   {
@@ -130,7 +130,7 @@ final List<Map<String, dynamic>> polygons = [
     "description":
         "Abondoned village of Jumail (Lejmail). More than 30 ruined/ buried structural features visible. Pre-dates 1966. Groundtruthing 2011 (HAC40); Settlement of Jumail (Lejmail), abandoned mid-late 20th century. No evidence of the pre-20th century. Heavy reconstruction has destroyed site. Groundtruthing 2014 (Ev207); An abandoned and reconstructed village on the coast. Upon visual inspection the village seems to be in a fairly poor condition with a large number of collapsed buildings and modern anthropogenic destructive activities including graffiti, poor reconstructive work using modern and unsympathetic materials, rubbish dumping and camping. Erosion towards the seaward side is fairly severe. Site is protected by fence but this can be circumvented by going on the beach which can be seen to be the case. It is recommended better protection is put in place and restoration is clearly demarcated. British Mission surveyed the site in 1973 under the direction of B. De Cardi.",
     "uri": 'https://maps.app.goo.gl/XvHQSqjicaEEoD1G6',
-    "supervisor": "Name of Inspector or Supervisor ...."
+    "supervisor": "Nassir"
   },
   // Lejmail South 4
   {
@@ -153,7 +153,7 @@ final List<Map<String, dynamic>> polygons = [
     "description":
         "April 2020 Review (HAC443): Rectangular enclosure in a small rawda area. Likely used for animals; period is stated to be pre-1963 and has been changed accordingly. The nearby well HAR3259 has been linked as peer-to-peer. Groundtruthing 2011 (HAC40): Enclosure of limestone of c. 28 x 23m. Possibly for animals. Located a few metres from the well (HAR3259). The enclosure is just S/E of the village Al Jemail and could be associated with this. Located in a small rawda. Modern road and tracks very close by. Groundtruthing 2010 (HAC12): survey has shown this feature to be a pre-1963 enclosure (probably for animals), with associated concrete well, and collapsed dry-stone walls. Remote sensing: Buried or ruined probable struture adjacent to modern road to the south east of Jumailiyah. Pre-dates 1966.",
     "uri": 'https://maps.app.goo.gl/tVRfFCT6y99APx3C8',
-    "supervisor": "Name of Inspector or Supervisor ...."
+    "supervisor": "Saad"
   },
   // Al Rwaidah 5
   {
@@ -197,7 +197,7 @@ final List<Map<String, dynamic>> polygons = [
     "description":
         "Ruwaida is one of the largest archaeological sites in northern Qatar, stretching for more than 2km along the beach of a shallow bay. The beach is covered with a dense growth of mangrove trees and bushes that obscure an ancient water channel which once connected the site to the open sea. Although very little is known about the site from historical sources and the only two historical references both indicate that it was abandoned by the end of the 18th century, Ruwaida stands out from the other historic settlements along the northern coasts of Qatar because its origins can be traced to the 1600’s and possibly back to the medieval period. The only source for understanding the origins, growth and eventual abandonment of the site comes from archaeological research.The first excavations at Ruwaida were carried in out in 2009 by the University of Wales, Trinity Saint David on behalf of the Qatar Museums Authority. Since then a series of excavations have revealed a large fortress (HAR10084), an excavated mosque (HAR10085), two buildings identified as potential mosques (one inside the fort and one on the west side of the settlement), two wells, several warehouses (HAR10083), a ship repair shop, a walled tomb as well as remains of numerous temporary structures. At the western limits of the site there are two cemeteries with graves of both children and adults marked by simple stone outlines. The eastern end of the site contains some rock carvings similar to those found at other sites around the coast of northern Qatar. Particularly worth mentioning is the garden which formed the centerpiece of the Phase II fortress. It is not yet clear if the large, rock-cut feature which formed the basis for the garden, was specially constructed, or whether it was a modified natural feature or a quarry for the limestone used in the Phase I fortress. The garden is located immediately below the contour line at which two of the wells or Ruwaida are located. The larger of the wells is located next to the round tower and may have been excavated as a water source for the garden. In any case, even today the garden area continues to receive and collect fresh water, partially from rain and partially from the aquifer. A functioning garden would have likely produced agricultural products for the inhabitants of the site. Ruwaida is the diminutive of the Arabic term rawda, which locally refers to the shallow depressions or green areas used by Bedouin to pasture their sheep. The name therefore seems appropriate for a settlement which incorporates a garden, or at least a meadow, right in the centre. So far the excavations have mainly identified material from the 17th and 18th centuries although there may be an earlier component to the site. Finds from the sea indicate far-reaching trade contacts with porcelain cups from China, Japan and Myanmar (Burma), unglazed earthenware from Julfar (the United Arab Emirates) and Bahrain, glazed earthenware and stone paste fritware from Iran (e.g. ARC.2010.8.239, ARC.2011.8.1111) as well as ceramics from Europe. The rooms of the fortress were roofed with mangrove poles likely to have originated in Africa. Significant finds recovered from the site include a red granite grinding bowl (ARC.2010.8.232) probably from Iran and a piece of bone carved in the form of an oryx (ARC.2013.8.5).",
     "uri": 'https://maps.app.goo.gl/zu38bkYRrT5mNcLx5',
-    "supervisor": "Name of Inspector or Supervisor ...."
+    "supervisor": "Saad"
   },
   // Al Nabbaah 6
   {
@@ -220,7 +220,7 @@ final List<Map<String, dynamic>> polygons = [
     "description":
         "Settlement- unknown date Groundtruthing 2011 (HAC40): Settlement composed by 5 limestone structures/buildings. Two are small rectilinear structures (animal pens?). Three are large complexes, each organised around a large central courtyard. One of these complexes possesses a well with a diameter of 3m. Very little material culture is visible on the surface. The settlement dates probably to the late 18th-19th centuries. Near some of the complexes there are small midden deposits.",
     "uri": 'https://maps.app.goo.gl/tVnUuYd67bHX1pLV6',
-    "supervisor": "Name of Inspector or Supervisor ...."
+    "supervisor": "Saad"
   },
   // Rass Khidaj 7
   {
@@ -250,7 +250,7 @@ final List<Map<String, dynamic>> polygons = [
     "description":
         "Settlement- unknown date Groundtruthing 2011 (HAC40): Settlement composed by 5 limestone structures/buildings. Two are small rectilinear structures (animal pens?). Three are large complexes, each organised around a large central courtyard. One of these complexes possesses a well with a diameter of 3m. Very little material culture is visible on the surface. The settlement dates probably to the late 18th-19th centuries. Near some of the complexes there are small midden deposits.",
     "uri": 'https://maps.app.goo.gl/zEuFVDr5ie7CMnwK9',
-    "supervisor": "Name of Inspector or Supervisor ...."
+    "supervisor": "Mohamed"
   },
   // Lukhwair  8
   {

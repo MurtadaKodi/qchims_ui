@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_animations/flutter_map_animations.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:heritage_ui/screens/arabic/location_data_arabic.dart' as location_data;
+import 'package:heritage_ui/screens/shared/app_strings.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LocationMapArabic extends StatefulWidget {
@@ -15,14 +15,12 @@ class LocationMapArabic extends StatefulWidget {
   _LocationMapArabicState createState() => _LocationMapArabicState();
 }
 
-class _LocationMapArabicState extends State<LocationMapArabic>
-    with TickerProviderStateMixin {
+class _LocationMapArabicState extends State<LocationMapArabic> with TickerProviderStateMixin {
   late final AnimatedMapController _animatedMapController;
   final PopupController _popupController = PopupController();
 
-
   String? _selectedName;
-  
+
   double _zoom = 12.0;
 
   @override
@@ -33,18 +31,17 @@ class _LocationMapArabicState extends State<LocationMapArabic>
 
   @override
   Widget build(BuildContext context) {
+    const text = AppStrings.arabic;
+
     return Scaffold(
       appBar: AppBar(
         title: DropdownButton<String>(
-            isExpanded: true, // يخلي العرض كامل
+          isExpanded: true, // يخلي العرض كامل
           menuMaxHeight: 300, // أقصى ارتفاع للقائمة (مع Scroll),
-          hint: Text(" اختر الموقع", textAlign: TextAlign.center),
+          hint: Text(text.locationSelectHint, textAlign: TextAlign.center),
           value: _selectedName,
           items: location_data.arabicData.map((loc) {
-            return DropdownMenuItem<String>(
-              value: loc["name"],
-              child: Text(loc["name"]),
-            );
+            return DropdownMenuItem<String>(value: loc["name"], child: Text(loc["name"]));
           }).toList(),
           onChanged: (value) {
             setState(() {
@@ -52,9 +49,7 @@ class _LocationMapArabicState extends State<LocationMapArabic>
             });
 
             // Find the marker by name
-            final selected = location_data.arabicData.firstWhere(
-              (loc) => loc["name"] == value,
-            );
+            final selected = location_data.arabicData.firstWhere((loc) => loc["name"] == value);
             final LatLng point = selected["point"];
 
             // Animate to marker (smooth move)
@@ -89,7 +84,8 @@ class _LocationMapArabicState extends State<LocationMapArabic>
         ),
         children: [
           TileLayer(
-            urlTemplate: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            urlTemplate:
+                'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
             subdomains: ['a', 'b', 'c'],
           ),
 
@@ -104,9 +100,8 @@ class _LocationMapArabicState extends State<LocationMapArabic>
                   point: loc["point"],
                   width: isSelected ? 50 : 40,
                   height: isSelected ? 50 : 40,
-                  child: Icon(isSelected
-                      ? Icons.location_pin
-                      : Icons.location_on,
+                  child: Icon(
+                    isSelected ? Icons.location_pin : Icons.location_on,
                     // Icons.location_pin,
                     color: isSelected ? Colors.blue : Colors.red,
                     size: isSelected ? 45 : 25,
@@ -140,10 +135,7 @@ class _LocationMapArabicState extends State<LocationMapArabic>
                               children: [
                                 Text(
                                   markerData['title'],
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                                 ),
                                 SizedBox(height: 4),
                                 Padding(
@@ -175,7 +167,7 @@ class _LocationMapArabicState extends State<LocationMapArabic>
                                       mode: LaunchMode.externalApplication,
                                     )) {}
                                   },
-                                  child: Text('انتقل إلى الموقع'),
+                                  child: Text(text.locationGoButton),
                                 ),
                               ],
                             ),
@@ -196,20 +188,19 @@ class _LocationMapArabicState extends State<LocationMapArabic>
                 ElevatedButton(
                   style: ButtonStyle(
                     shape: WidgetStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
+                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     ),
-                    backgroundColor: WidgetStateProperty.all(
-                      Colors.transparent,
-                    ),
+                    backgroundColor: WidgetStateProperty.all(Colors.transparent),
                     foregroundColor: WidgetStateProperty.all(Colors.black),
                     padding: WidgetStateProperty.all(EdgeInsets.all(20)),
                   ),
                   onPressed: () {
                     setState(() {
                       _zoom += .2;
-                      _animatedMapController.mapController.move(_animatedMapController.mapController.camera.center, _zoom);
+                      _animatedMapController.mapController.move(
+                        _animatedMapController.mapController.camera.center,
+                        _zoom,
+                      );
                     });
                   },
                   child: Icon(Icons.add, color: Colors.white, size: 30),
@@ -218,20 +209,19 @@ class _LocationMapArabicState extends State<LocationMapArabic>
                 ElevatedButton(
                   style: ButtonStyle(
                     shape: WidgetStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
+                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     ),
-                    backgroundColor: WidgetStateProperty.all(
-                      Colors.transparent,
-                    ),
+                    backgroundColor: WidgetStateProperty.all(Colors.transparent),
                     foregroundColor: WidgetStateProperty.all(Colors.white),
                     padding: WidgetStateProperty.all(EdgeInsets.all(20)),
                   ),
                   onPressed: () {
                     setState(() {
                       _zoom -= .2;
-                      _animatedMapController.mapController.move(_animatedMapController.mapController.camera.center, _zoom);
+                      _animatedMapController.mapController.move(
+                        _animatedMapController.mapController.camera.center,
+                        _zoom,
+                      );
                     });
                   },
                   child: Icon(Icons.remove, color: Colors.white, size: 30),
@@ -240,13 +230,9 @@ class _LocationMapArabicState extends State<LocationMapArabic>
                 ElevatedButton(
                   style: ButtonStyle(
                     shape: WidgetStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
+                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     ),
-                    backgroundColor: WidgetStateProperty.all(
-                      Colors.transparent,
-                    ),
+                    backgroundColor: WidgetStateProperty.all(Colors.transparent),
                     foregroundColor: WidgetStateProperty.all(Colors.white),
                     padding: WidgetStateProperty.all(EdgeInsets.all(20)),
                   ),
@@ -254,7 +240,10 @@ class _LocationMapArabicState extends State<LocationMapArabic>
                     setState(() {
                       // Reset zoom to default value
                       _zoom = 9.2;
-                      _animatedMapController.mapController.move(_animatedMapController.mapController.camera.center, _zoom);
+                      _animatedMapController.mapController.move(
+                        _animatedMapController.mapController.camera.center,
+                        _zoom,
+                      );
                     });
                   },
                   child: Icon(Icons.home, color: Colors.white, size: 30),

@@ -9,6 +9,52 @@ project 'Runner', {
   'Release' => :release,
 }
 
+def sanitize_dart_defines_in_generated_xcconfig
+  generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'ephemeral', 'Flutter-Generated.xcconfig'), __FILE__)
+  return unless File.exist?(generated_xcode_build_settings_path)
+
+  lines = File.readlines(generated_xcode_build_settings_path)
+  updated = false
+
+  sanitized = lines.map do |line|
+    next line unless line.start_with?('DART_DEFINES=')
+
+    value = line.split('=', 2)[1].to_s.strip
+    parts = value.split(',').map { |part| part.sub(/=+\z/, '') }
+    new_line = "DART_DEFINES=#{parts.join(',')}\n"
+    updated ||= (new_line != line)
+    new_line
+  end
+
+  File.write(generated_xcode_build_settings_path, sanitized.join) if updated
+end
+
+def restore_dart_defines_padding_in_generated_xcconfig
+  generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'ephemeral', 'Flutter-Generated.xcconfig'), __FILE__)
+  return unless File.exist?(generated_xcode_build_settings_path)
+
+  lines = File.readlines(generated_xcode_build_settings_path)
+  updated = false
+
+  restored = lines.map do |line|
+    next line unless line.start_with?('DART_DEFINES=')
+
+    value = line.split('=', 2)[1].to_s.strip
+    parts = value.split(',').map do |part|
+      padded = part.dup
+      padding_needed = (4 - (padded.length % 4)) % 4
+      padded + ('=' * padding_needed)
+    end
+    new_line = "DART_DEFINES=#{parts.join(',')}\n"
+    updated ||= (new_line != line)
+    new_line
+  end
+
+  File.write(generated_xcode_build_settings_path, restored.join) if updated
+end
+
+sanitize_dart_defines_in_generated_xcconfig
+
 def flutter_root
   generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'ephemeral', 'Flutter-Generated.xcconfig'), __FILE__)
   unless File.exist?(generated_xcode_build_settings_path)
@@ -39,4 +85,7 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_macos_build_settings(target)
   end
+
+  # Keep Flutter assemble happy after pod parsing by restoring base64 padding.
+  restore_dart_defines_padding_in_generated_xcconfig
 end
